@@ -23,6 +23,10 @@ namespace params {
 
         ~Params();
     };
+
+    void writeParamsToBinary(const std::string& filename, const Params& params);
+    
+    Params readParamsFromBinary(const std::string& filename);
 }
 
 #endif
