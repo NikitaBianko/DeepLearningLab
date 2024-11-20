@@ -1,34 +1,15 @@
 #include "params.h"
+#include "neuralNetwork.h"
 #include <stdio.h>
 
 using namespace params;
+using namespace std;
 
 int main() {
-    std::vector<LayerParams> layers = {LayerParams(4, true), LayerParams(1, false)};
+    vector<LayerParams> layers = {LayerParams(4, true), LayerParams(1, false)};
+    vector<vector<vector<double>>> weights = {{{5, -5, -5, -5}}};
 
     Params params(layers);
-
-    const std::string filename = "params/params.bin";
-
-    writeParamsToBinary(filename, params);
-
-    Params loadedParams = readParamsFromBinary(filename);
-    
-    printf("Layers:\n");
-    for (const auto& layer : loadedParams.Layers) {
-        printf("Count: %zu, Bias: %s\n", layer.Count, layer.Bias ? "true" : "false");
-    }
-
-    printf("\nWeights:\n");
-    for (const auto& matrix : loadedParams.Weights) {
-        for (const auto& row : matrix) {
-            for (double value : row) {
-                printf("%f ", value);
-            }
-            printf("\n");
-        }
-        printf("\n");
-    }
 
     return 0;
 }
